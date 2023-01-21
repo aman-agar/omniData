@@ -10,13 +10,9 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 
-import argparse
 import os.path
 from pathlib import Path
-import glob
-import sys
 
-import pdb
 
 from modules.unet import UNet
 from modules.midas.dpt_depth import DPTDepthModel
@@ -31,13 +27,26 @@ def depth():
     print("Image read successfully")
     # Call functions for getting depth and normal of input image
     depthImg=get_depth(img)
-    # normalImg=get_normal(img)
     
     # Return both depthImg and NormalImg as output from API
     print("Successfully sending the output")
     print(type(depthImg))
     
     return returnPIL(depthImg)
+
+@app.route('/normal',methods=['GET','POST'])
+def normal():
+    file = request.files['image']
+    img=Image.open(file.stream)
+    print("Image read successfully")
+    # Call functions for getting depth and normal of input image
+    normalImg=get_normal(img)
+    
+    # Return both depthImg and NormalImg as output from API
+    print("Successfully sending the output")
+    print(type(normalImg))
+    
+    return returnPIL(normalImg)
 
 def returnPIL(img):
     
@@ -153,4 +162,4 @@ def get_normal(img): # Gets an image and Returns normal output
 
 
 if __name__=='__main__':
-    app.run(debug=True,port=7000)
+    app.run()
