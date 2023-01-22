@@ -78,7 +78,7 @@ def tensor_to_image(tensor):
 
 def get_depth(img): # Get img to work upon and Returns the depth output
 
-    root_dir=root_dir = 'pretrained_model/'
+    root_dir=root_dir = './pretrained_model/'
     image_size = 384
     pretrained_weights_path = root_dir + 'omnidata_dpt_depth_v2.ckpt'  
     
@@ -125,7 +125,7 @@ def get_depth(img): # Get img to work upon and Returns the depth output
 
 
 def get_normal(img): # Gets an image and Returns normal output
-    root_dir=root_dir = 'pretrained_model/'
+    root_dir=root_dir = './pretrained_model/'
     image_size = 384
     
     pretrained_weights_path = root_dir + 'omnidata_dpt_normal_v2.ckpt'
