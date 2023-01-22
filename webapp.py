@@ -26,6 +26,8 @@ def depth():
     img=Image.open(file.stream)
     print("Image read successfully")
     # Call functions for getting depth and normal of input image
+    if not os.path.exists('pretrained_model/omnidata_dpt_depth_v2.ckpt'):
+        os.system('sh tools/download_depth_weights.sh')
     depthImg=get_depth(img)
     
     # Return both depthImg and NormalImg as output from API
@@ -40,6 +42,8 @@ def normal():
     img=Image.open(file.stream)
     print("Image read successfully")
     # Call functions for getting depth and normal of input image
+    if not os.path.exists('pretrained_model/omnidata_dpt_normal_v2.ckpt'):
+        os.system('sh tools/download_normal_weights.sh')
     normalImg=get_normal(img)
     
     # Return both depthImg and NormalImg as output from API
