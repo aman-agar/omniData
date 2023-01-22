@@ -29,12 +29,12 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt
-
+        
       - name: Install Depth Pretrained Module
         run: sh tools/download_depth_weights.sh
 
       - name: Install Surface Normal Module
-        run: sh tools/download_normal_weights.sh
+        run: sh tools/download_normal_weights.sh  
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
       - name: Upload artifact for deployment jobs
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'production'
+      name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -64,5 +64,5 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'omnidata'
-          slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_1234 }}
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C58685A718FD444AB8B0AB6780063342 }}
