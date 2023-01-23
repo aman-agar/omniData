@@ -15,4 +15,4 @@ pip install gdown
 mkdir -p pretrained_models
 
 # https://drive.google.com/uc?id=1UxUDbEygQ-CMBjRKACw_Xdj4RkDjirB5&confirm=t
-gdown '1Jrh-bRnJEjyMCS7f-WsaFlccfPjJPPHI&confirm=t' -O ./pretrained_models/ # omnidata depth (v2)
+gdown '1Jrh-bRnJEjyMCS7f-WsaFlccfPjJPPHI&confirm=t' -O ./pretrained_model/ # omnidata depth (v2)
